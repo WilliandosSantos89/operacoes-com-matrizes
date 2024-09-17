@@ -7,9 +7,9 @@ def criar_matriz():
     matriz = []
     print("Insira os s da matriz: ")
     for i in range(linhas):
-        linha = list(map(float, input(f"Digite os s da linha {i + 1}, separados por espaço: ").split()))
+        linha = list(map(float, input(f"Digite os elementos da linha {i + 1}, separados por espaço: ").split()))
         while len(linha) != colunas:
-            print((f"A linha deve ter {colunas} s. Tente novamente."))
+            print((f"A linha deve ter {colunas} elementos. Tente novamente."))
             linha = list(map(float, input(f"Digite os s da linha {i + 1}, separados por espaço:").split()))
         matriz.append(linha)
 
