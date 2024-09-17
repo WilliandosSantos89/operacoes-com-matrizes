@@ -5,17 +5,17 @@ def criar_matriz():
     colunas = int(input("Dgite o número de colunas: "))
 
     matriz = []
-    print("Insira os elementos da matriz: ")
+    print("Insira os s da matriz: ")
     for i in range(linhas):
-        linha = list(map(float, input(f"Digite os elementos da linha {i + 1}, separados por espaço: ").split()))
+        linha = list(map(float, input(f"Digite os s da linha {i + 1}, separados por espaço: ").split()))
         while len(linha) != colunas:
-            print((f"A linha deve ter {colunas} elementos. Tente novamente."))
-            linha = list(map(float, input(f"Digite os elementos da linha {i + 1}, separados por espaço:").split()))
+            print((f"A linha deve ter {colunas} s. Tente novamente."))
+            linha = list(map(float, input(f"Digite os s da linha {i + 1}, separados por espaço:").split()))
         matriz.append(linha)
 
     return np.array(matriz)
 
-def operacao_elemento(matriz, operacao):
+def operacao_(matriz, operacao):
     valor = float(input("Digite o valor para realizar a operação: "))
 
     if operacao == "somar":
@@ -49,7 +49,7 @@ def operacao_soma_total(matriz, operacao):
 def menu():
     print("\nMenu de Operações: ")
     print("1. Criar uma matriz")
-    print("2. Operações em cada elemento da matriz")
+    print("2. Operações em cada  da matriz")
     print("3. Operações com a soma total da matriz")
     print("4. Exibir matriz")
     print("5; Sair")
@@ -69,14 +69,66 @@ def main():
             if matriz is None:
                 print("Crie uma matriz primeiro. ")
             else:
-                print("\nOperacões em cada elemento: ")
+                print("\nOperacões em cada : ")
                 print("a. Somar")
                 print("b. Subtrair")
                 print("c. Multiplicar")
                 print("d. Dividir")
                 oper = input("Escolha a operação (a/bc/d): ").strip().lower()
 
-            
+                if oper == "a":
+                    matriz = operacao_(matriz, "somar")
+                elif oper == "b":
+                    matriz = operacao_(matriz, "subtrair")
+                elif oper == "c":
+                    matriz = operacao_(matriz, "multiplicar")
+                elif oper == "d":
+                    matriz = operacao_(matriz, "dividir")
+                else:
+                    print("Operação inválida. ")
+
+        elif opcao == "3":
+            if matriz is None:
+                print("Crie uma matriz primeiro. ")
+            else:
+                print("\nOperacões em cada : ")
+                print("a. Somar")
+                print("b. Subtrair")
+                print("c. Multiplicar")
+                print("d. Dividir")
+                oper = input("Escolha a operação (a/bc/d): ").strip().lower()
+
+                if oper == "a":
+                    resultado = operacao_soma_total(matriz, "somar")
+                elif oper == "b":
+                    resultado = operacao_soma_total(matriz, "subtrair")
+                elif oper == "c":
+                    resultado = operacao_soma_total(matriz, "multiplicar")
+                elif oper == "d":
+                    resultado = operacao_soma_total(matriz, "dividir")
+                else:
+                    print("Operação inválida. ")
+                    continue
+                print(f"Resultado da operação com a soma total: {resultado}")
+
+        elif opcao == "4":
+            if matriz is None:
+                print("Nenhuma matriz criada.")
+            else:
+                print("Matriz atual: ")
+                print(matriz)
+
+        elif opcao == "5":
+            print("Saindo...")
+            break
+
+        else: 
+            print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    main()
+
+
 
 
 
